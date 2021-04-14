@@ -87,6 +87,7 @@
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>6.0.13.Final</version>
 		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -95,12 +96,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
+					
 				</configuration>
 			</plugin>
 		</plugins>

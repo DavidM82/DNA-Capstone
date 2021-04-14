@@ -32,8 +32,8 @@ public class UserService {
 	}
 
 	public User findUserByUserName(String username) {
-		User user = userRepository.findByUsername(username);
-		return user;
+		return userRepository.findByUsername(username);
+		
 	}
 
 	public User registerUser(User user) {
