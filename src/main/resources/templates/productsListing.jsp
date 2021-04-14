@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://thymleaf.org">
 <head>
@@ -19,7 +19,12 @@
 	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"  crossorigin="anonymous"> </script>
 	<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.datatables.net/plug-ins/1.10.24/features/searchHighlight/dataTables.searchHighlight.min.js" crossorigin="anonymous"></script>
-	<script src="https://bartaz.github.io/sandbox.js/jquery.highlight.js"></script>
+	<script src="https://bartaz.github.io/sandbox.js/jquery.highlight.js"></script> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <head th:insert="fragments.html :: headerfiles">
+
 	<script>
 		$.fn.dataTable.ext.search.push(
 		    function( settings, data, dataIndex ) {
@@ -57,24 +62,21 @@
 		   
 		});
 	</script>
-	
-	
-</head>
 <body>
-	<div class="container">
-		<h1 class="display-4"><em><span style="color: #0000ff;"><span style="color: #993300;">All Products</span>🎶</span></em></h1>
-		<p>Checkout all the awesome products available now!</p>
+	<header th:insert="fragments.html :: nav"></header>
+
+	<div class="container p-2">
+		<h1>All Products</h1>
 		<hr class="featurette-divider">
-		<div class="row">
-			<div class="col-10"></div>
-			<div class="col">
-				<a class="btn btn-success btn-md" href="/music/cart" role="button">Shopping Cart</a></br>
-			</div>
-		</div>
-		<hr class="featurette-divider">
-		
-    	<div class="row">
-    	 <div class="col col-lg-3"></div>
+
+    	<div class="col text-right">
+<!--     		<b>Minimum Price: </b> -->
+    		<input type="number" id="min" step="0.01" placeholder="Minimum price">
+<!--     		<b>Maximum Price: </b> -->
+    		<input type="number" id="max" step="0.01" placeholder="Maximum price">
+    	</div>
+
+<!--     	 <div class="col col-lg-3"></div>
     	  <div class="col col-lg-3"></div>
 		  <div class="col col-lg-3">
 		  	 <table border="0" cellspacing="5" cellpadding="5">
@@ -89,57 +91,41 @@
 	        		</tr>
     			</tbody>
     	</table>
-		  </div>
-		</div>
+		  </div> -->
+<!-- 		</div> -->
 		<table id="example"  class="table table-bordered table-striped table-light table-hover">
 			<thead class="thead-dark">
 				<tr>
-					<th>ID</th>
+<!-- 					<th>ID</th> -->
 					<th>Product Name</th>
 					<th>Artist</th>
 					<th>Genre</th>
 					<th>Category</th>
 					<th>Type</th>
-					<th>Price($)</th>
+					<th>Price ($)</th>
 					<th style="display:none;">Description</th>
-					<th></th>
+<!-- 					<th></th> -->
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="r,state : ${results}">
-		           <td th:text="${state.count}" />
-		           <td th:text="${r.title}" />
+<!-- 		           <td th:text="${state.count}" /> -->
+		           <a th:href="@{/music/aboutProduct(productId=${r.pid})}" class="btn-link btn-sm"><td th:text="${r.title}"/></a>
+<!-- 		           <td th:text="${r.title}" /> -->
 		           <td th:text="${r.artist}"/>
 		           <td th:text="${r.category.genre.name}"/>
 		           <td th:text="${r.category.name}"/>
 		           <td th:text="${r.type}"/>
 		           <td th:text="${r.price}"/>
 		           <td style="display:none;" th:text="${r.description}"/>
-		           <td>
+<!-- 		           <td>
 		           	<a th:href="@{/music/aboutProduct(productId=${r.pid})}" class="btn btn-outline-info btn-sm">Info</a>	
-           		  </td>
+           		  </td> -->
 			     </tr>
 			</tbody>
-		</table>
-		<hr class="featurette-divider">
-		
+		</table>		
 	</div>
 	
-	<div class="row">
-		<div class="col-5">
-		</div>
-		<div class="col">
-			<a class="btn btn-primary" href="/home" role="button">Back</a>
-			<a class="btn btn-danger" href="/logout" role="button">Logout</a>
-			<a class="btn btn-secondary" href="/home" role="button">Home</a>
-		</div>
-	</div>
-	
-	<footer class="footer">
-      <div class="container">
-      	<hr class="featurette-divider">
-        <span class="text-muted"> &nbsp;&nbsp;&copy; 2021 Copyright: Team X </span>
-      </div>
-    </footer>
+	<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>

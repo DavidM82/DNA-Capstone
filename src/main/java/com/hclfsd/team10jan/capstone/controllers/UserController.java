@@ -22,7 +22,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping(value = {"/", "/login"})
+	@GetMapping("/")
+	public String getHomePage() {
+		return "productsListing";
+	}
+	
+	@GetMapping("/login")
 	public String getLoginPage() {
 		return "login";
 	}
@@ -37,22 +42,21 @@ public class UserController {
 	@PostMapping(value = "/registration")
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 	    ModelAndView modelAndView = new ModelAndView();
+	    modelAndView.setViewName("registration");
+
 	    User userExists = userService.findUserByUserName(user.getUsername());
 	    if (userExists != null) {
-	        bindingResult
-	                .rejectValue("userName", "error.user",
-	                        "There is already a user registered with the user name provided");
+	    	modelAndView.addObject("failMessage", "This username is already taken, please try a different one");
+	        return modelAndView;
 	    }
 	    if (bindingResult.hasErrors()) {
-	        modelAndView.setViewName("registration");
+	    	return modelAndView;
 	    } else {
 	        userService.registerUser(user);
 	        modelAndView.addObject("successMessage", "User has been registered successfully! Login now");
 	        modelAndView.addObject("user", new User());
-	        modelAndView.setViewName("registration");
-	
+	        return modelAndView;	
 	    }
-	    return modelAndView;
 	}
 	
 	@GetMapping("/home")

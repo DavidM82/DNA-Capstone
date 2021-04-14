@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://thymleaf.org">
 <head>
@@ -11,7 +11,15 @@
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 </head>
+<body> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <head th:insert="fragments.html :: headerfiles">
+</head>
 <body>
+	<header th:insert="fragments.html :: nav"></header>
+
 	<div class="container">
 		<h1 class="display-3">Product Detail</h1>
 		<p>Here is the detail information of the product!</p>
@@ -26,16 +34,11 @@
 		<h3  th:inline="text">Description: [[${res.description}]]</h3>
 	</div>
 	
-	
 	<div class="container">
 		<hr class="featurette-divider">
 		<a class="btn btn-link btn-lg"  th:href="@{/admin/products1}">Go Back</a>
 	</div>
 	
-	<footer class="footer">
-      <div class="container">
-        <span class="text-muted"> &nbsp;&nbsp;&copy; 2021 Copyright: Team X </span>
-      </div>
-    </footer>
+	<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>
