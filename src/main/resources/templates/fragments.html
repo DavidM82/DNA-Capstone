@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Fragment #1 : Headerfiles contains css and js references -->
+<head th:fragment="headerfiles">
+	<!-- Script for the hamburger menu to work -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	   
+	<!-- Tab Header -->
+    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/multiple-musical-notes_1f3b6.png">
+    <title>Music Store</title>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+	<link href="https://cdn.datatables.net/plug-ins/1.10.24/features/searchHighlight/dataTables.searchHighlight.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.datatables.net/plug-ins/1.10.24/features/searchHighlight/dataTables.searchHighlight.min.js" crossorigin="anonymous"></script>
+	<script src="https://bartaz.github.io/sandbox.js/jquery.highlight.js"></script>
+</head>
+
+<body>
+	<!-- Fragment #2 : Navbar contains nav links -->
+	<div th:fragment="nav">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<a class="navbar-brand" href="/">🎶 Music Store</a>
+			
+			<!-- Hamburger button -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<!-- Navbar items to go within hamburger menu -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/music/orders">Your Orders</a>
+					</li>
+					<li sec:authorize="hasRole('ADMIN')" class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Inventory Management
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a href="/admin/genres" class="dropdown-item">Manage Genres</a>
+							<a href="/admin/categories" class="dropdown-item">Manage Categories</a>
+							<a href="/admin/products1" class="dropdown-item">Manage Products</a>
+						</div>
+					</li>
+					<li sec:authorize="hasRole('ADMIN')" class="nav-item">
+						<a class="nav-link" href="/admin/customers">Customer Management</a>
+					</li>
+				</ul>
+				<ul class="nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/music/cart">Cart 🛒</a>
+					</li>
+				</ul>
+				<form class="form-inline ml-1" action="search">
+					<input type="text" required name="search" placeholder="Search for music" class="rounded">
+					<button class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Search 🔎</button>
+				</form>
+				<form class="form-inline ml-1" form-method="post" th:action="@{/logout}">
+					<button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Logout</button>
+				</form>
+				<a sec:authorize="isAnonymous()" href="/login" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Login</a>
+			</div>
+		</nav>
+		<body style='margin: 6vh;'></body>
+	</div>
+
+	<!-- Fragment #3: Footer contains footer layout -->
+	<footer th:fragment="footer" class="footer bg-dark fixed-bottom py-1"
+		    	style='position: fixed;
+			        	left: 0;
+			            bottom: 0;
+			            width: 100%;
+			            color: white;
+			            text-align: center;'>
+	    	© 2021 Music Store
+	</footer>
+</body>
+</html>

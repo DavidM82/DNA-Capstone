@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://thymleaf.org">
 <head>
@@ -14,7 +14,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css"  crossorigin="anonymous">
 	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"  crossorigin="anonymous"> </script>
-	<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <head th:insert="fragments.html :: headerfiles">
+
 	<script>
 		$(document).ready(function() {
 		    $('#example').dataTable({
@@ -24,7 +29,10 @@
 		});
 	</script>
 </head>
+
 <body>
+	<header th:insert="fragments.html :: nav"></header>
+
 	<div class="container">
 		<h1 class="display-3">Genres</h1>
 		<p>This is the genres page!</p>
@@ -62,15 +70,6 @@
 		</table>
 	</div>
 	
-	<div class="container">
-		<hr class="featurette-divider">
-		<a class="btn btn-link btn-lg"  th:href="@{/home}">Back to Home Page</a>
-	</div>
-	
-	<footer class="footer">
-      <div class="container">
-        <span class="text-muted"> &nbsp;&nbsp;&copy; 2021 Copyright: Team X </span>
-      </div>
-    </footer>
+	<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>

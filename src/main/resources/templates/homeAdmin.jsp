@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://thymleaf.org">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Welcome</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
-    
+    <head th:insert="fragments.html :: headerfiles">
 </head>
 
 <body>
+	<header th:insert="fragments.html :: nav"></header>
+
+		<h2>Welcome admin [[${user.username}]]</h2>
+		<hr class="featurette-divider">
+
 	<div class="container">
-		<h1 class="display-3">Administrator Page</h1>
-		<p>This is the administrator page!</p>
 		<hr class="featurette-divider">
-		<div class="row">
-			<div class="col-7"><h2 class="display-4" th:inline="text">Welcome admin: [[${user.username}]]</h2></div>
-			<div class="col">
-				<form class="form-signin" method="get" action="/logout">
-        		<button class="btn btn-danger btn-block" type="submit" style="width:100%">Logout</button>
-    		</form>
-			</div>
-			<div class="col"></div>
-		</div>
-		
-		<hr class="featurette-divider">
-		
-		<a class="btn btn-link btn-lg" href="/admin/products" role="button">Product Inventory</a></br>
+
+<!-- 		<ul class="list-group">
+			<li class="list-group-item">Product Inventory
+		</ul> -->
+
+		<a class="btn-link btn-lg" href="/admin/products">Product Inventory</a></br>
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;Here you can view, check and modify the product inventory!</p>
-		
+
 		<a class="btn btn-link btn-lg" href="/admin/customers" role="button">Customer Management</a></br>
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;Here you can view customer Information</p>
+
+		<div class="container">
+		<h1 class="display-4 my-3">Your Cart</h1>
+			<div class="row">
+				<ul class="list-group col-9">
+					<li class="list-group-item d-flex justify-content-around">
+						<span class="my-auto h6">Product Image</span> 
+						<span class="my-auto h6">Product</span> 
+						<span class="my-auto h6">Price</span> 
+					</li>
+				</ul>
+			</div>
+		</div>
+
 	</div>
-	<footer class="footer">
-      <div class="container">
-        <span class="text-muted"> &nbsp;&nbsp;&copy; 2021 Copyright: Team X </span>
-      </div>
-    </footer>
+	
+	<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>

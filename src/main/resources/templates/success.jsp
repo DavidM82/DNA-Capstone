@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://thymleaf.org">
 <head>
@@ -11,7 +11,15 @@
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 </head>
+<body> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <head th:insert="fragments.html :: headerfiles">
+</head>
 <body>
+	<header th:insert="fragments.html :: nav"></header>
+
 	<div class = "container">
 		<div class="alert alert-success" role="alert">
 	  		<h2 class="display-2"> Thank you for your business!</h2>
@@ -23,19 +31,10 @@
 			</div>
 			<div class="col">
 				<a class="btn btn-primary" href="/music/orders" role="button">View Orders</a>
-				<a class="btn btn-secondary" href="/home" role="button">Home</a>
-				<a class="btn btn-danger" href="/logout" role="button">Logout</a>
-				
 			</div>
 		</div>
 	</div>
-	
-	<footer class="footer">
-      <div class="container">
-      	<hr class="featurette-divider">
-        <span class="text-muted"> &nbsp;&nbsp;&copy; 2021 Copyright: Team X </span>
-      </div>
-    </footer>
-	
+
+	<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>
