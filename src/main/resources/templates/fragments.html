@@ -16,8 +16,7 @@
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
-    	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 	<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css" rel="stylesheet" crossorigin="anonymous">
 	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
@@ -41,14 +40,18 @@
 			<!-- Navbar items to go within hamburger menu -->
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-<!-- 					<li class="nav-item">
-						<a class="nav-link" href="/music/products">Product Inventory</a>
-					</li> -->
 					<li class="nav-item">
 						<a class="nav-link" href="/music/orders">Your Orders</a>
 					</li>
-					<li sec:authorize="hasRole('ADMIN')" class="nav-item">
-						<a class="nav-link" href="/admin/products">Inventory Management</a>
+					<li sec:authorize="hasRole('ADMIN')" class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Inventory Management
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a href="/admin/genres" class="dropdown-item">Manage Genres</a>
+							<a href="/admin/categories" class="dropdown-item">Manage Categories</a>
+							<a href="/admin/products1" class="dropdown-item">Manage Products</a>
+						</div>
 					</li>
 					<li sec:authorize="hasRole('ADMIN')" class="nav-item">
 						<a class="nav-link" href="/admin/customers">Customer Management</a>
@@ -64,11 +67,9 @@
 					<button class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Search 🔎</button>
 				</form>
 				<form class="form-inline ml-1" form-method="post" th:action="@{/logout}">
-<!-- 					<button class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Logout</button> -->
-
 					<button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Logout</button>
 				</form>
-					<a sec:authorize="isAnonymous()" href="/login" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Login</a>
+				<a sec:authorize="isAnonymous()" href="/login" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Login</a>
 			</div>
 		</nav>
 		<body style='margin: 6vh;'></body>

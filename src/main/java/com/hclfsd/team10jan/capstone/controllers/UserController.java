@@ -22,11 +22,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/")
-	public String getHomePage() {
-		return "productsListing";
-	}
-	
 	@GetMapping("/login")
 	public String getLoginPage() {
 		return "login";
@@ -59,14 +54,14 @@ public class UserController {
 	    }
 	}
 	
-	@GetMapping("/home")
-	public String getHomePage(ModelMap model, Principal principal, HttpServletRequest request) {
-		String username = principal.getName();
-		User user = userService.findUserByUserName(username);
-		model.addAttribute("user", user);
-		if (request.isUserInRole("ROLE_ADMIN")) {
-            return "homeAdmin";
-        }
-        return "home";
-	}
+//	@GetMapping("/home")
+//	public String getHomePage(ModelMap model, Principal principal, HttpServletRequest request) {
+//		String username = principal.getName();
+//		User user = userService.findUserByUserName(username);
+//		model.addAttribute("user", user);
+//		if (request.isUserInRole("ROLE_ADMIN")) {
+//            return "homeAdmin";
+//        }
+//        return "home";
+//	}
 }

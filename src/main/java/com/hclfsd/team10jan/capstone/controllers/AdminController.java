@@ -79,11 +79,6 @@ public class AdminController {
 		return "redirect:/admin/viewOrders";
 	}
 	
-	@GetMapping("/products")
-	public String getProducts() {
-		return "products";
-	}
-	
 	@GetMapping("/genres")
 	public String getGenres(ModelMap model) {
 		Iterable<Genre> genres = genreService.getAllGenres();
