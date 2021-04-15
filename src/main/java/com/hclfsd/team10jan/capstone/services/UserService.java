@@ -1,13 +1,11 @@
 package com.hclfsd.team10jan.capstone.services;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hclfsd.team10jan.capstone.entities.User;
 import com.hclfsd.team10jan.capstone.repositories.UserRepository;
-
 
 @Service
 public class UserService {
@@ -17,7 +15,6 @@ public class UserService {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	  
 
 	public Iterable<User> getAllUsers() {
 		return userRepository.findAll();
@@ -33,7 +30,6 @@ public class UserService {
 
 	public User findUserByUserName(String username) {
 		return userRepository.findByUsername(username);
-		
 	}
 
 	public User registerUser(User user) {
@@ -41,6 +37,4 @@ public class UserService {
         user.setRoles("ROLE_USER");
         return userRepository.save(user);
 	}
-
 }
-

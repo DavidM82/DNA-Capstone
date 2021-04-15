@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://thymleaf.org">
 <head>
@@ -16,8 +16,17 @@
 	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"  crossorigin="anonymous"> </script>
 	<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 </head>
+<body> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <head th:insert="fragments.html :: headerfiles">
+</head>
 <body>
-<div class="container">
+	<header th:insert="fragments.html :: nav"></header>
+
+	<div class="container">
 	<h2 class="display-3">Orders</h2>
 	<hr class="featurette-divider">
 	
@@ -51,27 +60,7 @@
 	     </tr>
 	</tbody>
 	</table>
-		<hr class="featurette-divider">
 	
-</div>
-<br>
-	<div class="container">
-		<div class="row">
-			<div class="col-10">
-				<a class="btn btn-link btn-lg"  th:href="@{/home}">Back to Home Page</a>
-			</div>
-			<div class="col">
-				<a class="btn btn-danger btn-lg" href="/logout" role="button">Logout</a></br>
-			</div>
-		</div>
-		
-	</div>
-	
-	<footer class="footer">
-      <div class="container">
-      	<hr class="featurette-divider">
-        <span class="text-muted">&nbsp;&nbsp;&copy; 2021 Copyright: Team X </span>
-      </div>
-    </footer>
+	<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>

@@ -40,23 +40,22 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http
 		.csrf().disable()
 		.authorizeRequests()
-        .antMatchers("/","/css/*", "/js/*").permitAll()
-        .antMatchers("/registration").permitAll()
-        .antMatchers("/homeAdmin", "/admin/*").hasRole("ADMIN")
-        .antMatchers("/music/*").not().hasRole("ADMIN")
+        .antMatchers("/","/css/*", "/js/*", "/registration", "/music/products").permitAll()
+//        .antMatchers("/homeAdmin", "/admin/*").hasRole("ADMIN")
+//        .antMatchers("/music/*").not().hasRole("ADMIN")
 		.anyRequest()
 		.authenticated()
 		.and()
 		.formLogin()
 			.loginPage("/login").permitAll()
 			.failureUrl("/login?error=true")
-			.defaultSuccessUrl("/home", true)
+			.defaultSuccessUrl("/music/products", true)
 			.usernameParameter("username")
 			.passwordParameter("password")
 		.and()
 		.logout()
 			.logoutUrl("/logout")
 	        .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
-	        .logoutSuccessUrl("/login");
+	        .logoutSuccessUrl("/music/products");
 	}    
 }

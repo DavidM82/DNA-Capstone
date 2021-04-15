@@ -29,7 +29,7 @@ public class MusicController {
 	@Autowired
 	private MusicService musicService;
 	
-	@GetMapping("/products")
+	@GetMapping(value={"/products", "/"})
 	public String getProducts(ModelMap model) {
 		Iterable<Result> results = musicService.getAll();
 		model.addAttribute("results", results);

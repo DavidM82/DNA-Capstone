@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://thymleaf.org">
 <head>
@@ -11,7 +11,15 @@
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 </head>
+<body> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <head th:insert="fragments.html :: headerfiles">
+</head>
 <body>
+	<header th:insert="fragments.html :: nav"></header>
+
 	<div class = "container">
 	 	<div class="row">
 	 		<div class="col-md-12">
@@ -111,12 +119,7 @@
 				</form>
             </div>
 		</div>
-	<footer class="footer">
-      <div class="container">
-      	<hr class="featurette-divider">
-        <span class="text-muted"> &nbsp;&nbsp;&copy; 2021 Copyright: Team X </span>
-      </div>
-    </footer>
-	
+
+	<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>
