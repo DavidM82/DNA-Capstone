@@ -31,8 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-
-### Others ###
-mvnw
-mvnwd.cmd
